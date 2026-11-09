@@ -32,7 +32,7 @@ const PROJECTS = [
     title: "Siam Ocean",
     url: "https://www.siamocean-eg.com/",
     logo: "images/logos/siam-ocean.png",
-    year: "", // <- add the year you built it
+    year: "2024",
     category: "Food industries · Egypt",
     description:
       "Brand and product-catalog site for an Egyptian food manufacturer.",
@@ -41,7 +41,7 @@ const PROJECTS = [
     title: "Safaga Shore Excursions",
     url: "https://www.safagashoreexcursions.com/",
     logo: "images/logos/safaga.webp",
-    year: "", // <- add the year you built it
+    year: "2022",
     category: "Travel & tours · Egypt",
     description:
       "Tour booking site for shore excursions from Egyptian ports.",
