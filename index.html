@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weam Fouda — Portfolio</title>
+  <meta name="description" content="Selected websites and digital products designed and built by Weam Fouda." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="#top" class="logo" id="logo">W.F</a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact" class="nav-cta">Let's talk</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <p class="eyebrow reveal"><span class="dot"></span> Available for new projects</p>
+      <h1 class="reveal">
+        I design &amp; build<br />
+        <em>websites that</em><br />
+        feel alive.
+      </h1>
+      <div class="hero-foot reveal">
+        <p class="lead">Hi, I'm <strong id="name">Weam Fouda</strong> — a web developer crafting fast, interactive sites for brands that want to stand out.</p>
+        <a href="#work" class="scroll-cue">See selected work <span>↓</span></a>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="work">
+      <div class="section-head reveal">
+        <h2>Selected work</h2>
+        <span class="count" id="work-count"></span>
+      </div>
+      <div class="projects" id="projects"><!-- filled by script.js --></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <h2 class="reveal">What I do</h2>
+      <div class="services">
+        <article class="service reveal">
+          <span class="num">01</span>
+          <h3>Web design</h3>
+          <p>Clean, bold layouts with a clear story — from first impression to the final click.</p>
+        </article>
+        <article class="service reveal">
+          <span class="num">02</span>
+          <h3>Development</h3>
+          <p>Fast, responsive, multilingual sites with interactive touches like calculators and live demos.</p>
+        </article>
+        <article class="service reveal">
+          <span class="num">03</span>
+          <h3>Launch &amp; care</h3>
+          <p>Hosting, SEO basics, and ongoing updates so your site keeps working for you.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="reviews">
+      <div class="section-head reveal">
+        <h2>Kind words</h2>
+        <span class="count" id="review-count"></span>
+      </div>
+      <div class="review-grid" id="review-grid"><!-- filled by script.js --></div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="contact-intro">
+        <p class="eyebrow reveal">Have a project in mind?</p>
+        <h2 class="big-title reveal">Let's work <em>together.</em></h2>
+        <p class="contact-lead reveal">Tell me about your idea and I'll get back to you within a day. WhatsApp is the fastest way to reach me.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-cards" id="contact-cards"><!-- filled by script.js --></div>
+
+        <form class="contact-form reveal" id="contact-form" novalidate>
+          <h3>Send a quick message</h3>
+          <label>
+            <span>Your name</span>
+            <input type="text" name="name" placeholder="Sara Ahmed" autocomplete="name" required />
+          </label>
+          <label>
+            <span>What do you need?</span>
+            <textarea name="message" rows="3" placeholder="A website for my business with…" required></textarea>
+          </label>
+          <p class="form-error" id="form-error" role="alert" hidden>Add your name and a short message first.</p>
+          <button type="submit" class="btn-primary">Send on WhatsApp <span>→</span></button>
+          <small>Opens WhatsApp with your message ready to send.</small>
+        </form>
+      </div>
+
+      <div class="socials reveal" id="socials"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Weam Fouda</span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
