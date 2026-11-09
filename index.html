@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -26,12 +26,40 @@
   <main id="top">
     <!-- HERO -->
     <section class="hero">
-      <p class="eyebrow reveal"><span class="dot"></span> Available for new projects</p>
-      <h1 class="reveal">
-        I design &amp; build<br />
-        <em>websites that</em><br />
-        feel alive.
-      </h1>
+      <div class="hero-top">
+        <div class="hero-text">
+          <p class="eyebrow reveal"><span class="dot"></span> Available for new projects</p>
+          <h1 class="reveal">
+            I design &amp; build<br />
+            <em>websites that</em><br />
+            feel alive.
+          </h1>
+        </div>
+
+        <!-- 3D browser window that tilts with the mouse -->
+        <div class="hero-visual reveal" id="hero-visual" aria-hidden="true">
+          <div class="browser" id="browser">
+            <div class="browser-bar">
+              <i></i><i></i><i></i>
+              <span>weamfouda306.github.io</span>
+            </div>
+            <div class="browser-body">
+              <div class="mini-nav"><b>W.F</b><span></span><span></span><span class="pill"></span></div>
+              <div class="mini-hero">
+                <div class="mini-line w80"></div>
+                <div class="mini-line w60 blue"></div>
+                <div class="mini-line w40"></div>
+              </div>
+              <div class="mini-cards">
+                <div class="mini-card"><div class="mini-logo"><img src="images/logos/kromax.svg" alt="" /></div><div class="mini-line w70"></div></div>
+                <div class="mini-card"><div class="mini-logo"><img src="images/logos/siam-ocean.png" alt="" /></div><div class="mini-line w70"></div></div>
+                <div class="mini-card"><div class="mini-logo"><img src="images/logos/safaga.webp" alt="" /></div><div class="mini-line w70"></div></div>
+              </div>
+            </div>
+            <div class="browser-glare"></div>
+          </div>
+        </div>
+      </div>
       <div class="hero-foot reveal">
         <p class="lead">Hi, I'm <strong id="name">Weam Fouda</strong> — a web developer crafting fast, interactive sites for brands that want to stand out.</p>
         <a href="#work" class="scroll-cue">See selected work <span>↓</span></a>
@@ -114,6 +142,6 @@
     <a href="#top">Back to top ↑</a>
   </footer>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>

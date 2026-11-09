@@ -228,6 +228,37 @@ function setupReveal() {
   targets.forEach((el) => io.observe(el));
 }
 
+/* Hero: the browser window tilts toward the mouse */
+function setupHeroTilt() {
+  const hero = $(".hero");
+  const box = $("#browser");
+  if (!hero || !box) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!window.matchMedia("(hover: hover)").matches) return; // phones keep the resting angle
+
+  const REST = "rotateY(-14deg) rotateX(6deg)";
+  let frame = null;
+
+  hero.addEventListener("pointermove", (e) => {
+    if (frame) return;
+    frame = requestAnimationFrame(() => {
+      frame = null;
+      const r = box.getBoundingClientRect();
+      // -1 … 1 from the window's centre, clamped
+      const nx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (r.width * 0.9)));
+      const ny = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (r.height * 0.9)));
+      box.style.transform = `rotateY(${nx * 18}deg) rotateX(${-ny * 14}deg) translateZ(20px)`;
+      box.style.setProperty("--gx", `${(e.clientX - r.left) / r.width * 100}%`);
+      box.style.setProperty("--gy", `${(e.clientY - r.top) / r.height * 100}%`);
+    });
+  });
+  hero.addEventListener("pointerleave", () => {
+    box.style.transform = REST;
+    box.style.removeProperty("--gx");
+    box.style.removeProperty("--gy");
+  });
+}
+
 function setupNav() {
   const nav = $(".nav");
   const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 20);
@@ -240,3 +271,4 @@ renderReviews();
 renderContact();
 setupReveal();
 setupNav();
+setupHeroTilt();
