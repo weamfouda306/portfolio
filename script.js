@@ -16,14 +16,13 @@ const CONFIG = {
   ADD A PROJECT: copy one block below and change the values.
   Keep the description to one short sentence.
   - logo    path to the site's logo, e.g. "images/logos/name.png" (leave "" for none)
-  - logoBg  "light" for dark-coloured logos, "dark" for white logos
+  Logos sit on a white panel, so use a version with dark/coloured text.
 */
 const PROJECTS = [
   {
     title: "KROMAX",
     url: "https://kromax.co",
-    logo: "images/logos/kromax.webp",
-    logoBg: "dark",
+    logo: "images/logos/kromax.svg",
     year: "2026",
     category: "Solar energy · Smart home",
     description:
@@ -33,7 +32,6 @@ const PROJECTS = [
     title: "Siam Ocean",
     url: "https://www.siamocean-eg.com/",
     logo: "images/logos/siam-ocean.png",
-    logoBg: "light",
     year: "", // <- add the year you built it
     category: "Food industries · Egypt",
     description:
@@ -43,7 +41,6 @@ const PROJECTS = [
     title: "Safaga Shore Excursions",
     url: "https://www.safagashoreexcursions.com/",
     logo: "images/logos/safaga.webp",
-    logoBg: "light",
     year: "", // <- add the year you built it
     category: "Travel & tours · Egypt",
     description:
@@ -102,7 +99,7 @@ function renderProjects() {
     const meta = [p.category, p.year].filter(Boolean).join(" · ");
     return `
       <${tag} class="project reveal" ${attrs}>
-        ${p.logo ? `<div class="logo-plate ${p.logoBg === "dark" ? "dark" : "light"}"><img src="${esc(p.logo)}" alt="${esc(p.title)} logo" loading="lazy" /></div>` : ""}
+        ${p.logo ? `<div class="logo-plate"><img src="${esc(p.logo)}" alt="${esc(p.title)} logo" loading="lazy" /></div>` : ""}
         <span class="num">${String(i + 1).padStart(2, "0")}</span>
         <div class="project-main">
           <h3>${esc(p.title)}</h3>
