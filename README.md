@@ -14,6 +14,10 @@ Everything you'd normally change lives at the top of `script.js`:
 - `PROJECTS` — work shown in "Selected work"
 - `REVIEWS` — client quotes in "Kind words"
 
+## Publishing changes
+
+After editing `styles.css` or `script.js`, bump the `?v=` number on their links in `index.html` (e.g. `?v=2` → `?v=3`) so visitors' browsers load the new files instead of a cached copy.
+
 ## Run locally
 
 ```bash
