@@ -2,6 +2,8 @@
 
 Personal portfolio site: selected work, services, reviews and contact.
 
+**Live:** https://weamfouda306.github.io/portfolio/
+
 Plain HTML, CSS and JavaScript — no build step.
 
 ## Edit content
