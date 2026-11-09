@@ -14,9 +14,7 @@ const CONFIG = {
 
 /*
   ADD A PROJECT: copy one block below and change the values.
-  - image  (optional) path to a screenshot, e.g. "images/kromax.jpg".
-            Without one, a styled preview is generated from title + colors.
-  - colors two hex colors used for the generated preview.
+  Keep the description to one short sentence.
 */
 const PROJECTS = [
   {
@@ -25,10 +23,7 @@ const PROJECTS = [
     year: "2026",
     category: "Solar energy · Smart home",
     description:
-      "Bilingual website for a solar & smart-home company in Syria — with a live solar-flow animation, an interactive savings calculator, and QR product verification.",
-    tags: ["Web design", "Development", "Interactive", "EN / AR"],
-    colors: ["#4f9dff", "#1e40af"],
-    image: "",
+      "Bilingual site for a solar and smart-home company, with a live energy animation and savings calculator.",
   },
   {
     title: "Siam Ocean",
@@ -36,10 +31,7 @@ const PROJECTS = [
     year: "", // <- add the year you built it
     category: "Food industries · Egypt",
     description:
-      "Website for an Egyptian food manufacturer — showcasing its Safana and Fiorella brands, a filterable private-label product catalog, and an international enquiry form.",
-    tags: ["Web design", "Development", "Product catalog", "Brands"],
-    colors: ["#38bdf8", "#0e7490"],
-    image: "",
+      "Brand and product-catalog site for an Egyptian food manufacturer.",
   },
   {
     title: "Safaga Shore Excursions",
@@ -47,10 +39,7 @@ const PROJECTS = [
     year: "", // <- add the year you built it
     category: "Travel & tours · Egypt",
     description:
-      "Booking website for a travel agency running shore excursions from Safaga and other Egyptian ports — tour listings with prices and durations, tailor-made trip requests, and a travel blog.",
-    tags: ["Web design", "Development", "Tour booking", "Blog"],
-    colors: ["#22d3ee", "#1e3a8a"],
-    image: "",
+      "Tour booking site for shore excursions from Egyptian ports.",
   },
 ];
 
@@ -97,54 +86,27 @@ function domain(url) {
   try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return ""; }
 }
 
-function preview(p) {
-  if (p.image) {
-    return `<img src="${esc(p.image)}" alt="${esc(p.title)} website screenshot" loading="lazy" />`;
-  }
-  const [a, b] = p.colors || ["#888", "#444"];
-  return `
-    <div class="gen" style="--a:${esc(a)};--b:${esc(b)}">
-      <div class="gen-bar"><i></i><i></i><i></i><span>${esc(domain(p.url) || "coming-soon")}</span></div>
-      <div class="gen-body">
-        <div class="gen-orb"></div>
-        <strong>${esc(p.title)}</strong>
-        <div class="gen-lines"><b></b><b></b><b></b></div>
-      </div>
-    </div>`;
-}
-
 function renderProjects() {
-  const wrap = $("#projects");
-  wrap.innerHTML = PROJECTS.map((p, i) => {
+  $("#projects").innerHTML = PROJECTS.map((p, i) => {
     const live = Boolean(p.url);
     const tag = live ? "a" : "div";
     const attrs = live ? `href="${esc(p.url)}" target="_blank" rel="noopener"` : "";
-    const [ca, cb] = p.colors || ["#4f9dff", "#1e40af"];
+    const meta = [p.category, p.year].filter(Boolean).join(" · ");
     return `
-      <${tag} class="project reveal" style="--a:${esc(ca)};--b:${esc(cb)}" ${attrs}>
-        <div class="project-media">${preview(p)}</div>
-        <div class="project-info">
-          <div class="project-top">
-            <span class="num">${String(i + 1).padStart(2, "0")}</span>
-            <span class="meta">${esc([p.category, p.year].filter(Boolean).join(" · "))}</span>
-          </div>
-          <h3>${esc(p.title)} ${live ? '<span class="arrow">↗</span>' : ""}</h3>
+      <${tag} class="project reveal" ${attrs}>
+        <span class="num">${String(i + 1).padStart(2, "0")}</span>
+        <div class="project-main">
+          <h3>${esc(p.title)}</h3>
           <p>${esc(p.description)}</p>
-          <ul class="tags">${(p.tags || []).map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
-          ${live ? `<span class="visit">Visit ${esc(domain(p.url))}</span>` : ""}
         </div>
+        <div class="project-side">
+          <span class="meta">${esc(meta)}</span>
+          ${live ? `<span class="domain">${esc(domain(p.url))}</span>` : ""}
+        </div>
+        ${live ? '<span class="go" aria-hidden="true">↗</span>' : ""}
       </${tag}>`;
   }).join("");
   $("#work-count").textContent = `(${String(PROJECTS.length).padStart(2, "0")})`;
-
-  // hover glow follows the mouse inside each card
-  wrap.querySelectorAll(".project").forEach((card) => {
-    card.addEventListener("pointermove", (e) => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty("--mx", `${e.clientX - r.left}px`);
-      card.style.setProperty("--my", `${e.clientY - r.top}px`);
-    });
-  });
 }
 
 function initials(name) {
